@@ -2,14 +2,16 @@
 
 ## Cloud Deployment (Extra Credit)
 
-The application has been successfully deployed on **Google Kubernetes Engine (GKE)**.
+### 1. Docker Images (Public)
 
-### 1. Unified Deployment
+All services were successfully built (`linux/amd64`) and pushed to Docker Hub.
 
-Deployed via the provided manifest:
+![Docker Hub](./docker_hub.png)
 
-```bash
-kubectl apply -f deploy_dns.yml
-```
+### 2. Kubernetes (GKE) Execution & End-to-End Testing
 
-### Screenshot
+The system was deployed to a Google Kubernetes Engine (GKE) cluster. The tests below confirm successful internal routing and calculation:
+
+1. **Service Registration:** FS successfully registered `fibonacci.com` with AS via UDP.
+2. **DNS Resolution & Computation:** US successfully resolved the IP from AS and retrieved the 10th Fibonacci number (`55`) from FS.
+   ![GKE](./gke_result.png)
